@@ -83,16 +83,31 @@ public class BlackJack {
         manoJugador.add(baraja[1][rm.nextInt(baraja[1].length)] + " de " + baraja[0][rm.nextInt(baraja[0].length)]);
 
     }
+    
+    public static int sumaCartas(ArrayList<String> mano,HashMap<String,Integer> mapa){
+        
+        int suma=0;
+        
 
-    public static int verificacion(ArrayList<String> mano, HashMap<String, Integer> mapa) {
-
-        int suma = 0;
 
         for (String carta : mano) {
 
             suma += asociarValores(mapa, carta);
 
         }
+        
+        System.out.println("Tus cartas suman: "+suma);
+        
+        
+    
+     return suma;
+    }
+
+    public static int verificacion(ArrayList<String> mano, HashMap<String, Integer> mapa) {
+
+        int suma = sumaCartas(mano,mapa);
+
+        
 
         if (suma > 21) {
 
@@ -102,7 +117,7 @@ public class BlackJack {
             System.out.println("Blackjack! : " + suma);
             return suma;
         } else {
-            System.out.println("Sumas: " + suma);
+           // System.out.println("Sumas: " + suma);
             return suma;
         }
 
